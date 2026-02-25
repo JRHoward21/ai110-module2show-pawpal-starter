@@ -2,6 +2,10 @@
 
 ## 1. System Design
 
+- track a pet
+- create a schedule
+- make a daily planner
+
 **a. Initial design**
 
 - Briefly describe your initial UML design.

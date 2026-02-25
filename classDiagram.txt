@@ -1,0 +1,26 @@
+classDiagram
+    class Pet {
+        +name: str
+        +type: str
+        +age: int
+        +tasks: list[Task]
+    }
+    class Task {
+        +name: str
+        +duration: int
+        +priority: int
+        +category: str
+    }
+    class Schedule {
+        +tasks: list[Task]
+        +total_time: int
+        +generate_explanation(): str
+    }
+    class DailyPlanner {
+        +generate_plan(pet: Pet, available_time: int): Schedule
+        +consider_constraints(tasks: list[Task], time: int): list[Task]
+    }
+    Pet --> Task : has
+    Schedule --> Task : contains
+    DailyPlanner --> Pet : uses
+    DailyPlanner --> Schedule : creates
