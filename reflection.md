@@ -18,7 +18,7 @@ My UML Design includes a Task, Pet, Schedule, and Daily Planner class. The Daily
 - Did your design change during implementation?
 - If yes, describe at least one change and why you made it.
 
----
+Yes, the designed lacked depth in relationships and robustness. There wasn't a clear connection between "Pets" and "Schedule" so the AI suggested I added validation, dependency graphs, and more sohpisticated selection algorithms.
 
 ## 2. Scheduling Logic and Tradeoffs
 
