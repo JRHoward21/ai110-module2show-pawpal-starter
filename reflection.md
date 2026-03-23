@@ -11,6 +11,8 @@
 - Briefly describe your initial UML design.
 - What classes did you include, and what responsibilities did you assign to each?
 
+My UML Design includes a Task, Pet, Schedule, and Daily Planner class. The DailyPlanner generates the plan and consider constraints. It then uses "Pet" (which contains name, type, age, and tasks) and creates "Schedule" (which contains tasks, total time, and explanation). Pet has "Task" within it and schedule contains "Task". "Task" contains name, duration, priority, and category.
+
 **b. Design changes**
 
 - Did your design change during implementation?
