@@ -1,5 +1,22 @@
 import pytest
-from pawpal_system import Task, Pet
+from pawpal_system import Owner, Task, Pet
+
+
+class TestOwnerCreation:
+    """Test suite for Owner creation functionality."""
+    
+    def test_owner_creation_with_name_and_email(self):
+        """Verify that an Owner can be created with name and email."""
+        owner = Owner(name='Jordan', email='jordan@example.com')
+        assert owner.name == 'Jordan'
+        assert owner.email == 'jordan@example.com'
+    
+    def test_owner_attributes_are_accessible(self):
+        """Verify that owner attributes can be retrieved and modified."""
+        owner = Owner(name='Sam', email='sam@example.com')
+        assert owner.name == 'Sam'
+        owner.name = 'Samuel'
+        assert owner.name == 'Samuel'
 
 
 class TestTaskCompletion:
