@@ -32,7 +32,7 @@ Yes, the designed lacked depth in relationships and robustness. There wasn't a c
 - Describe one tradeoff your scheduler makes.
 - Why is that tradeoff reasonable for this scenario?
 
----
+--- Your scheduler chooses a simple greedy selection strategy (build_with_time_slots picks task by prioritized order and fills available minutes in sequence), which is fast and easy to reason about (O(n log n) sort + linear scan), but it may miss better overall arrangements that maximize task count or reduce cross-pet overlap in a non-greedy way. It's reasonable for this scenario because it offers simplicity, clarity, predictable behavior.
 
 ## 3. AI Collaboration
 
