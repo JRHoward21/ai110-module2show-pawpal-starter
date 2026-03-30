@@ -1,0 +1,79 @@
+classDiagram
+    class Owner {
+        +name: str
+        +email: str
+    }
+    
+    class Task {
+        +name: str
+        +description: str
+        +duration: int
+        +frequency: str
+        +completed: bool
+        +priority: int
+        +category: str
+        +preferred_time: str
+        +start_time: datetime
+        +last_completed: datetime
+        +due_date: date
+        +dependencies: List[str]
+        +mark_complete(): void
+        +create_next_occurrence(): Task
+        +mark_incomplete(): void
+        +is_due(): bool
+        +conflicts_with(other: Task): bool
+        +summary(): str
+    }
+    
+    class Pet {
+        +name: str
+        +species: str
+        +age: int
+        +tasks: List[Task]
+        +add_task(task: Task): void
+        +remove_task(task_name: str): void
+        +get_task(task_name: str): Task
+        +pending_tasks(): List[Task]
+        +completed_tasks(): List[Task]
+        +filter_tasks(status: str): List[Task]
+    }
+    
+    class DailyPlanner {
+        +pets: Dict[str, Pet]
+        +add_pet(pet: Pet): void
+        +remove_pet(pet_name: str): void
+        +get_pet(pet_name: str): Pet
+        +all_pets(): List[Pet]
+        +all_tasks(include_completed: bool): List[Task]
+        +all_pending_tasks(): List[Task]
+        +tasks_by_pet(pet_name: str): List[Task]
+        +tasks_by_frequency(frequency: str): List[Task]
+        +tasks_by_status(completed: bool): List[Task]
+        +tasks_by_category(category: str): List[Task]
+        +tasks_due_today(): List[Task]
+        +filter_tasks(...): List[Task]
+    }
+    
+    class Schedule {
+        +planner: DailyPlanner
+        +scheduled_tasks: List[Task]
+        +total_time: int
+        +retrieve_tasks(...): List[Task]
+        +retrieve_tasks_filtered(...): List[Task]
+        +organize_tasks(tasks: List[Task], by: str): List[Task]
+        +build(available_time: int, ...): List[Task]
+        +explain(): str
+        +complete_task(task_name: str, ...): bool
+        +get_pet_for_task(task: Task): Pet
+        +detect_conflicts(tasks: List[Task]): List[str]
+        +assign_time_slots(tasks: List[Task], ...): List[Task]
+        +build_with_time_slots(...): List[Task]
+        +resolve_conflicts(tasks: List[Task]): List[Task]
+        +get_schedule_summary(): str
+    }
+    
+    Owner --> Pet : owns (if implemented)
+    Pet --> Task : has
+    DailyPlanner --> Pet : contains
+    Schedule --> DailyPlanner : uses
+    Schedule --> Task : schedules

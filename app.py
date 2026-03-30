@@ -1,6 +1,12 @@
 import streamlit as st
 from pawpal_system import Task, Pet, DailyPlanner, Schedule
 
+# Initialize session state
+if 'planner' not in st.session_state:
+    st.session_state.planner = DailyPlanner()
+if 'current_pet' not in st.session_state:
+    st.session_state.current_pet = None
+
 st.set_page_config(page_title="PawPal+", page_icon="🐾", layout="centered")
 
 st.title("🐾 PawPal+")
@@ -126,7 +132,7 @@ if st.button("Generate schedule"):
     else:
         # Create schedule and build it
         schedule = Schedule(st.session_state.planner)
-        scheduled_tasks = schedule.build(available_time=available_time)
+        scheduled_tasks = schedule.build_with_time_slots(available_time=available_time)
         
         if scheduled_tasks:
             st.success(f"Scheduled {len(scheduled_tasks)} tasks in {schedule.total_time} minutes!")
@@ -135,17 +141,19 @@ if st.button("Generate schedule"):
             st.subheader("Today's Schedule")
             schedule_data = []
             for i, task in enumerate(scheduled_tasks, 1):
+                start_time_str = task.start_time.strftime('%H:%M') if task.start_time else 'TBD'
                 schedule_data.append({
                     "Order": i,
                     "Task": task.name,
                     "Duration": f"{task.duration}m",
                     "Priority": task.priority,
-                    "Category": task.category
+                    "Category": task.category,
+                    "Start Time": start_time_str
                 })
             st.table(schedule_data)
             
             # Show explanation
             st.subheader("Schedule Explanation")
-            st.text(schedule.explain())
+            st.text(schedule.get_schedule_summary())
         else:
             st.warning("No tasks could be scheduled with the current constraints. Try increasing available time or adding more tasks.")

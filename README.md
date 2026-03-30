@@ -51,3 +51,13 @@ The PawPal+ scheduler includes advanced features for generating reliable pet car
 - **Recurring Task Management**: Handles daily, weekly, and monthly tasks seamlessly; completing a recurring task generates the next occurrence.
 - **Flexible Filtering & Sorting**: Filter tasks by pet, category, priority, or frequency; sort by duration, time preference, or urgency to find the best fit.
 - **Conflict Resolution**: When overlaps are detected, the scheduler can reorder tasks by priority and reassign slots to resolve conflicts.
+
+-**Testinging PawPal+**:
+When the command python -m pytest is runned, the tests covers Owner and Pet Management (4 tests): Basic creation and attribute handling for owners and pets, plus task addition to pets.
+Task Lifecycle (2 tests): Task completion status changes.
+Sorting Correctness (9 tests): Validates the organize_tasks() method for sorting by priority, duration, category, name, start time, and time preferences.
+Recurrence Logic (10 tests): Tests create_next_occurrence() and complete_task() for daily, weekly, monthly, and one-time tasks, ensuring proper next occurrence generation.
+Conflict Detection (8 tests): Verifies detect_conflicts() identifies overlapping schedules for same-pet and cross-pet scenarios, including edge cases like unscheduled tasks.
+Running python -m pytest executes all 32 tests, confirming the scheduler's reliability for pet care task management, sorting, recurrence, and conflict prevention.
+
+Confidence Level: 4 stars
