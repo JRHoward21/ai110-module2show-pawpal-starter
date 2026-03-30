@@ -61,3 +61,26 @@ Conflict Detection (8 tests): Verifies detect_conflicts() identifies overlapping
 Running python -m pytest executes all 32 tests, confirming the scheduler's reliability for pet care task management, sorting, recurrence, and conflict prevention.
 
 Confidence Level: 4 stars
+
+-**Features**:
+Core Data Management
+Pet and Owner Tracking: Manages pet profiles linked to owners, with basic attributes like name and email.
+Task Management: Stores tasks with attributes including name, description, duration, frequency, priority, category, preferred time, due dates, and dependencies.
+Task Filtering and Organization
+Multi-Criteria Filtering: Filters tasks by pet, completion status, category, frequency, and due date (e.g., tasks due today).
+Flexible Sorting: Organizes tasks by priority (default), duration, category, time preference (morning/afternoon/evening), name, or start time.
+Scheduling and Optimization
+Greedy Schedule Building: Optimizes task selection within available time constraints, prioritizing high-priority tasks using a knapsack-like algorithm.
+Time Slot Assignment: Assigns sequential time blocks to selected tasks, starting from a specified hour.
+Conflict Detection: Identifies overlapping tasks for the same pet or across pets using interval overlap checks.
+Conflict Resolution: Reorders conflicting tasks by priority and reassigns time slots to eliminate overlaps.
+Recurring Task Handling
+Recurrence Management: Automatically creates next occurrences for daily, weekly, or monthly tasks upon completion.
+Task Completion Tracking: Marks tasks complete with timestamps and handles recurrence logic.
+Additional Utilities
+Schedule Explanation: Generates human-readable summaries of built schedules.
+Cross-Pet Coordination: Manages tasks across multiple pets in a daily planner.
+
+-**Demo**:
+https://1drv.ms/i/c/b3131aebb623beef/IQAciC6hVeiWSai1ESE0wMsCAct3LoPcFyL5iM57qv_sZAE?e=hEpgrb
+
